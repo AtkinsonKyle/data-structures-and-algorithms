@@ -9,11 +9,11 @@ Then, write a function named speaker that takes in a string and a callback funct
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-  return word.toUpperCase();
+  // Solution code here...
 };
 
 const speaker = (message, callback) => {
-  return callback(message);
+  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,14 +33,11 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  arr.push(value);
+  // Solution code here...
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  for (let i = 0; i < times; i++){
-    callback(arr, num);
-  }
-  return arr;
+  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -61,12 +58,8 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-const createList = (availableItems) =>{
+const createList = (availableItems) => {
   // Solution code here...
-  let output = [];
-  availableItems.forEach(value => {
-    if(i = 0; i <)
-  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -85,21 +78,6 @@ Return the resulting output array.
 
 const fizzbuzz = (arr) => {
   // Solution code here...
-  arr.forEach(value => {
-    if (value % 5 === 0 && value %  3 === 0){
-      output.push('Fizz Buzz');
-    }
-    else if(value % 3 === 0 ) {
-      output.push('Fizz');
-    }
-    else if (value % 5 === 0) {
-      output.push('Buzz')
-    }
-    else {
-      output.push(value);
-    }
-  })
-  return output;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -113,13 +91,13 @@ Run your tests from the console: jest challenges-01.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return the message with all uppercase characters', () => {
     expect(speaker('hello 301 students!', greeting)).toStrictEqual('HELLO 301 STUDENTS!');
   });
 });
 
-xdescribe('Testing challenge 2', () => {
+describe('Testing challenge 2', () => {
   test('It should add the number 8 to the array five times', () => {
     expect(addNumbers(8, [], 5, addValues)).toStrictEqual([8, 8, 8, 8, 8]);
     expect(addNumbers(8, [], 5, addValues).length).toStrictEqual(5);
