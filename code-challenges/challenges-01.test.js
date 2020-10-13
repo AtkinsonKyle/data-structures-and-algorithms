@@ -9,11 +9,11 @@ Then, write a function named speaker that takes in a string and a callback funct
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
-  return word.toUpperCase();
+  // Solution code here...
 };
 
 const speaker = (message, callback) => {
-  return callback(message);
+  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -33,14 +33,11 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
-  arr.push(value);
+  // Solution code here...
 };
 
 const addNumbers = (num, arr, times, callback) => {
-  for (let i = 0; i < arr.length; i++) {
-
-  };
-  callback();
+  // Solution code here...
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -107,7 +104,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   const inventory = [{ name: 'apples', available: true }, { name: 'pears', available: true }, { name: 'oranges', available: false }, { name: 'bananas', available: true }, { name: 'blueberries', available: false }];
 
   test('It should only add the available items to the list', () => {
@@ -116,7 +113,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
