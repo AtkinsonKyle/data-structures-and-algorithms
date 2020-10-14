@@ -45,7 +45,7 @@ const addValues = (arr, value) => {
 const addNumbers = (num, arr, times, callback) => {
   // Solution code here...
 
-  for (var i = 0; i<times; i++){
+  for (let i = 0; i<times; i++){
     callback(arr,num);
   }
   return arr;
@@ -74,7 +74,8 @@ const createList = (availableItems) => {
 
   let list = [];
   availableItems.forEach((value) => {
-    if (value.available === true){list.push(value.name);}
+    if (value.available === true){
+      list.push(value.name);}
   });
 
   return list;
@@ -98,7 +99,7 @@ const fizzbuzz = (arr) => {
   // Solution code here...
 
   arr.forEach((value, i) => {
-    if(value % 3 === 0 && value % 5 === 0){arr[i] = 'Fizz Buzz';}
+    if(value % 3 === 0 && value % 5 === 0) {arr[i] = 'Fizz Buzz';}
     else if (value % 3 === 0) {arr[i] = 'Fizz';}
     else if (value % 5 === 0) {arr[i] = 'Buzz';}
     else {arr[i] = value;}
