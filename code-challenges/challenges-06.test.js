@@ -70,22 +70,17 @@ let $ = createSnippetWithJQuery(`
 `);
 
 const templatingWithMustache = () => {
-  // Solution code here...
-  characters.forEach(obj => {
-    let templateObj = {
-      name: obj.name,
-      spouse: obj.spouse,
-      children: obj.children,
-      house: obj.house
-    };
-    // Get the template
-    let $template = $('#template').html();
-    // Populate with data
-    let rendered = Mustache.render($template, templateObj);
-    console.log(rendered);
-    return rendered;
+  let ace = [];
+  let $template = $('#template').html();
+
+  characters.forEach(person => {
+    let rendering = Mustache.render($template, person);
+    ace.push(rendering);
   });
+
+  return ace;
 };
+
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 2
 
@@ -93,19 +88,13 @@ Write a function named getCourseKeys that takes in the courseInfo object and ret
 
 For example: (['name', 'duration', 'topics', 'finalExam']).
 ------------------------------------------------------------------------------------------------ */
-const courseInfo = {
-  name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks' },
+const courseInfo = { name: 'Code 301', duration: { dayTrack: '4 weeks', eveningTrack: '8 weeks'},
   topics: ['SMACSS', 'APIs', 'NodeJS', 'SQL', 'jQuery', 'functional programming'],
   finalExam: true
 };
 
-const getCourseKeys = (obj) => {
-  // Solution code here...
-  obj.keys(courseInfo.forEach(obj => {
-    console.log(obj);
-    console.log(courseInfo);
-  }));
-};
+const getCourseKeys = obj => Object.keys(obj);
+// Solution code here...
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -114,9 +103,13 @@ Write a function named getHouses that returns a new array containing the names o
 ------------------------------------------------------------------------------------------------ */
 
 const getHouses = (arr) => {
-  let houses = [];
-  // Solution code here...
-  return houses;
+  let house = [];
+
+  arr.forEach(person => {
+    house.push(person.house);
+  });
+
+  return house;
 };
 
 /*------------------------------------------------------------------------------------------------
@@ -132,8 +125,18 @@ hasChildrenValues(characters, 'Sansa') will return false
 ------------------------------------------------------------------------------------------------ */
 
 const hasChildrenValues = (arr, character) => {
-  // Solution code here...
+  let value = false;
 
+  arr.forEach(person => {
+    if (person.name === character) {
+      if (person.children !== []) {
+        console.log(person.children);
+        value = true;
+      }
+    }
+  });
+
+  return value;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -209,7 +212,7 @@ Run your tests from the console: jest challenges-06.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should return html markup with the character', () => {
     const filledTemplates = templatingWithMustache();
     const $ = cheerio.load(filledTemplates[0]);
@@ -223,14 +226,14 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array of the names of the houses', () => {
     expect(getHouses(characters)).toStrictEqual(['Stark', 'Arryn', 'Lannister', 'Targaryen', 'Tyrell', 'Greyjoy', 'Snow']);
     expect(getHouses(characters).length).toStrictEqual(7);
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return true for characters that have children', () => {
     expect(hasChildrenValues(characters, 'Daenarys')).toBeTruthy();
   });
