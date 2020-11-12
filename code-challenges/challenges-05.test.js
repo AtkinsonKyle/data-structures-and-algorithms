@@ -40,18 +40,13 @@ let $ = createSnippetWithJQuery(`
 
 const templateWithJQuery = () => {
   // Solution code here...
-  starWarsPeople.forEach(obj => {
-    //Get the destination
-    let $template = $('#template');
-    //Populate the cloned markup with data
+  const $template = $('#template');
+  starWarsPeople.forEach(value => {
     let $new = $template.clone();
-    $new.removeAttr('#template');
-    $new.find('h2').text(obj.name);
-    $new.find('h3').text(obj.height);
-    $new.find('p').text(obj.eye_color);
-    // Append clone to the destination
-    $('section').append($new);
-    console.log(obj);
+    $new.children('h2').text(value.name);
+    $new.children('h3').text(value.height);
+    $new.children('p').text(value.eye_color);
+    $('main').append($new);
   });
 };
 
@@ -70,12 +65,11 @@ For example, if the input is 'Welcome', the output will be:
 ------------------------------------------------------------------------------------------------ */
 
 const howMuchPencil = (str) => {
-  let result = [];
   // Solution code here...
-  for (let i = 0; i < str.length; i++){
+  let result = [];
+  for (let i = 0; i < str.length + 1; i++) {
     result.push(str.slice(i, str.length));
   }
-  result.push('');
   return result;
 };
 
@@ -89,6 +83,7 @@ For example, wordsToCharList('gregor') returns ['g','r','e','g','o','r'].
 
 const wordsToCharList = (arr) => {
   // Solution code here...
+  return arr.split('');
 };
 
 
@@ -134,8 +129,11 @@ const gruffaloCrumble = {
 
 
 const listFoods = (recipe) => {
-  let result = [];
   // Solution code here...
+  let result = [];
+  recipe.ingredients.forEach(value => {
+    result.push(value.slice((value.indexOf(' ', 3))+1));
+  });
   return result;
 };
 
@@ -256,7 +254,7 @@ Run your tests from the console: jest challenges-05.test.js
 
 ------------------------------------------------------------------------------------------------ */
 
-xdescribe('Testing challenge 1', () => {
+describe('Testing challenge 1', () => {
   test('It should append the star wars people to the DOM', () => {
     templateWithJQuery();
     expect($('section:nth-child(2) h2').text()).toStrictEqual('Luke Skywalker');
@@ -274,7 +272,7 @@ describe('Testing challenge 2', () => {
   });
 });
 
-xdescribe('Testing challenge 3', () => {
+describe('Testing challenge 3', () => {
   test('It should return an array of individual letters', () => {
     expect(wordsToCharList('Gregor')).toStrictEqual(['G', 'r', 'e', 'g', 'o', 'r']);
     expect(wordsToCharList('Gregor').length).toStrictEqual(6);
@@ -283,7 +281,7 @@ xdescribe('Testing challenge 3', () => {
   });
 });
 
-xdescribe('Testing challenge 4', () => {
+describe('Testing challenge 4', () => {
   test('It should return a list of foods', () => {
     expect(listFoods(gruffaloCrumble)).toStrictEqual(['Gruffalo', 'oats', 'brown sugar', 'flour', 'pure maple syrup', 'chopped nuts', 'baking soda', 'baking powder', 'cinnamon', 'melted butter', 'fresh water']);
     expect(listFoods(gruffaloCrumble).length).toStrictEqual(11);
